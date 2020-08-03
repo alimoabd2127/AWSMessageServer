@@ -1,7 +1,7 @@
 {
-  "name": "semiring-logging-api",
+  "name": "aws-message-server",
   "version": "1.0.0",
-  "description": "Koa Server that for logging all semiring data",
+  "description": "Koa Server for sending messages through AWS SNS and SES",
   "author": "Abdulaziz Alimov",
   "private": true,
   "scripts": {
