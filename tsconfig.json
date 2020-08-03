@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "target": "ESNext",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": [
+                "./*"
+              ]
+        }
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/*.json"
+    ],
+    "exclude": []
+}
