@@ -1,4 +1,4 @@
-import config from '@/logger.json'
+import config from '@/config.json'
 import { sendEmail, verifyModelMiddleware } from '@/utils'
 import Joi from 'joi'
 import Router from 'koa-router'
