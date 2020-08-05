@@ -1,6 +1,6 @@
 # AWS Message Server
 
-A NodeJS server that sets up a local server for you to send emails and sms messages from your AWS account using HTTP POST methods.
+A NodeJS server for you to send emails and sms messages from your AWS account using HTTP POST methods.
 
 Please user the Docker container for a production setup.
 
