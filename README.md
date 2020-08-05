@@ -6,8 +6,8 @@ Please user the Docker container for a production setup.
 
 ## Docker Setup
 
-Setup your logger.json file in your current directory
-> Modify the logger.json file in the src folder for your targets.
+Setup your config.json file in your current directory
+> Modify the config.json file in the src folder for your targets.
 > Verify the source email has been verified on AWS SES.
 > Verify the phone numbers have the country code with a plus.
 
@@ -25,7 +25,7 @@ Setup your logger.json file in your current directory
 ```
 
 Create a docker-compose like below, or use with docker run.
-> Be sure to link your logger.json file properly
+> Be sure to link your config.json file properly
 
 ```docker-compose
 version: '3.4'
@@ -36,14 +36,14 @@ services:
       AWS_SECRET_ACCESS_KEY: your_aws_secret_access_key
       AWS_REGION: us-east-1
     volumes:
-      - '$PWD/logger.json:/usr/src/app/src/logger.json'
+      - '$PWD/config.json:/usr/src/app/src/config.json'
     image: alimoabd2127/aws-message-server
 ```
 
 ## Build Setup
 
-Setup the logger.json file in the src folder
-> Modify the logger.json file in the src folder for your targets.
+Setup the config.json file in the src folder
+> Modify the config.json file in the src folder for your targets.
 > Verify the source email has been verified on AWS SES.
 > Verify the phone numbers have the country code with a plus.
 
