@@ -4,20 +4,17 @@ A NodeJS server that sets up a local server for you to send emails and sms messa
 
 Please user the Docker container for a production setup.
 
-## Build Setup
+## Docker Setup
 
-``` bash
-# create a .env file with environment variables
-AWS_ACCESS_KEY_ID=your_aws_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
-AWS_REGION=us-east-1 # example region, set it to a proper region with SES and SNS support (not all regions have support)
+Setup your logger.json file in your current directory
+> Modify the logger.json file in the src folder for your targets.
+> Verify the source email has been verified on AWS SES.
+> Verify the phone numbers have the country code with a plus.
 
-# modify the logger.json file in the src folder for your targets
-# make sure the source email has been verified on AWS SES
-# make sure phone numbers have the country code with a plus
+```json
 {
     "email": {
-        "source": "verified@email.com", # make sure its verified on AWS SES!!!
+        "source": "verified@email.com",
         "to" : ["user@email.com", "user2@email.com"],
         "replyTo": ["replyto@email.com", "replyto2@email.com"]
     },
@@ -25,7 +22,54 @@ AWS_REGION=us-east-1 # example region, set it to a proper region with SES and SN
         "to":["+12223334444"]
     }
 }
+```
 
+Create a docker-compose like below, or use with docker run.
+> Be sure to link your logger.json file properly
+
+```docker-compose
+version: '3.4'
+services:
+  messenger:
+    environment:
+      AWS_ACCESS_KEY_ID: your_aws_key
+      AWS_SECRET_ACCESS_KEY: your_aws_secret_access_key
+      AWS_REGION: us-east-1
+    volumes:
+      - '$PWD/logger.json:/usr/src/app/src/logger.json'
+    image: alimoabd2127/aws-message-server
+```
+
+## Build Setup
+
+Setup the logger.json file in the src folder
+> Modify the logger.json file in the src folder for your targets.
+> Verify the source email has been verified on AWS SES.
+> Verify the phone numbers have the country code with a plus.
+
+```json
+{
+    "email": {
+        "source": "verified@email.com",
+        "to" : ["user@email.com", "user2@email.com"],
+        "replyTo": ["replyto@email.com", "replyto2@email.com"]
+    },
+    "sms" : {
+        "to":["+12223334444"]
+    }
+}
+```
+
+Create a .env file with environment variables
+> Set AWS_REGION to a proper region with SES and SNS support (not all regions have support)
+
+```env
+AWS_ACCESS_KEY_ID=your_aws_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+AWS_REGION=us-east-1
+```
+
+```bash
 # install dependencies
 $ npm install
 
@@ -39,6 +83,8 @@ $ npm run start
 ---
 
 ## Usage
+
+Example usage with Axios.  More examples to come.
 
 ### Email
 
