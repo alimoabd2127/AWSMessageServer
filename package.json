@@ -14,7 +14,7 @@
   "dependencies": {
     "app-root-path": "^3.0.0",
     "aws-sdk": "^2.721.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "joi": "^17.1.1",
     "koa": "^2.13.0",
